@@ -46,7 +46,7 @@ app.post('/interactions', async function (req, res) {
     }
 
     if (name === 'tell-me-a-joke'){
-      return res.send(getSimpleMessageBody(getRandomJoke()));
+      return res.send(getSimpleMessageBody(await getRandomJoke()));
     }
   }
 });
