@@ -41,7 +41,7 @@ const CHALLENGE_COMMAND = {
 };
 
 const JOKE_COMMAND = {
-  name: 'tell me a joke',
+  name: 'tell-me-a-joke',
   description: 'get a random joke',
   type: 1,
 };

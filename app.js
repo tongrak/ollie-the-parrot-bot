@@ -45,7 +45,7 @@ app.post('/interactions', async function (req, res) {
       return res.send(getSimpleMessageBody('hello world ' + getRandomEmoji()));
     }
 
-    if (name === 'tell me a joke'){
+    if (name === 'tell-me-a-joke'){
       return res.send(getSimpleMessageBody(getRandomJoke()));
     }
   }
