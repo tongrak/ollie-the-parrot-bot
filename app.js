@@ -26,7 +26,9 @@ const activeGames = {};
 app.post('/interactions', async function (req, res) {
   // Interaction type and data
   const { type, id, data } = req.body;
-
+  console.log('LOG: receive a request');
+  console.log('LOG: Type:', type);
+  
   /**
    * Handle verification requests
    */
