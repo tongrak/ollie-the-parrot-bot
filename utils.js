@@ -66,6 +66,8 @@ export async function getRandomJoke(){
   const res = await fetch(`https://v2.jokeapi.dev/joke/Any?format=txt`);
   if(!res.ok){
     console.warn('WARN: fail to get a joke with message:', res.status,res.body);
+    return 'fail to get a joke';
   }
-  return res.ok ? res.body : 'fail to get a joke';
+  // resString = resString.replace(/[\n\r]/g,' ');
+  return await res.text();
 }
