@@ -40,7 +40,13 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+const JOKE_COMMAND = {
+  name: 'tell me a joke',
+  description: 'get a random joke',
+  type: 1,
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, JOKE_COMMAND, CHALLENGE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
 console.log('LOG: install global command: success');

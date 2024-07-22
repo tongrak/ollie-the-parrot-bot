@@ -7,7 +7,8 @@ import {
   MessageComponentTypes,
   ButtonStyleTypes,
 } from 'discord-interactions';
-import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
+import { getSimpleMessageBody } from './snippet.js';
+import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest, getRandomJoke } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
 
 const app = express();
@@ -22,10 +23,8 @@ const activeGames = {};
  */
 app.post('/interactions', async function (req, res) {
   const { type, id, data } = req.body;
-  console.log('TEMP: request Body', req)
   console.log('LOG: receive a request');
   console.log('LOG: Type:', type);
-  console.log('LOG: Id:', id);
   
   /**
    * Handle verification requests
@@ -43,14 +42,11 @@ app.post('/interactions', async function (req, res) {
 
     // "test" command
     if (name === 'test') {
-      // Send a message into the channel where command was triggered from
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
-        },
-      });
+      return res.send(getSimpleMessageBody('hello world ' + getRandomEmoji()));
+    }
+
+    if (name === 'tell me a joke'){
+      return res.send(getSimpleMessageBody(getRandomJoke()));
     }
   }
 });

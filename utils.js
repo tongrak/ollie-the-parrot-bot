@@ -60,3 +60,12 @@ export function getRandomEmoji() {
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+//Joke section
+export async function getRandomJoke(){
+  const res = await fetch(`https://v2.jokeapi.dev/joke/Any?format=txt`);
+  if(!res.ok){
+    console.warn('WARN: fail to get a joke with message:', res.status,res.body);
+  }
+  return res.ok ? res.body : 'fail to get a joke';
+}
